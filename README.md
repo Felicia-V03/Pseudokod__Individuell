@@ -1,0 +1,1 @@
+# Pseudokod__Individuell
