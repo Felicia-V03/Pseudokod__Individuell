@@ -17,8 +17,63 @@
     <button type="button" onclick="splitnota()">Räkna</button>
     <br>
     <h2 id="split"></h2>
-
-    <h1>Lewis Carroll Word Puzzle</h1>
     <script src="script.js"></script>
+
+    <h1>Gissningsspel</h1>
+    <p>Gissa ett ord från listan.</p>
+
+    <!-- Input för gissning -->
+    <input type="text" id="gissning" placeholder="Skriv ditt gissning här" />
+    <button onclick="gissa()">Gissa!</button>
+
+    <!-- Feedback meddelande -->
+    <p id="feedback"></p>
+
+    <!-- Statistisk information -->
+    <div id="stats">
+        <p>Antal gissningar: <span id="antal-gissningar">0</span></p>
+    </div>
+
+    <script>
+        // Lista med ord att gissa
+        const ordlista = ['äpple', 'banan', 'citron', 'dator', 'fönster', 'hund', 'katt'];
+
+        // Variabler för att räkna gissningar
+        let antalGissningar = 0;
+
+        // Välj ett slumpmässigt ord från ordlistan
+        let valtOrd = ordlista[Math.floor(Math.random() * ordlista.length)];
+
+        // Funktion för att hantera gissningen
+        function gissa() {
+            // Hämta gissningen från användaren
+            const gissning = document.getElementById('gissning').value.toLowerCase();
+
+            // Öka antal gissningar
+            antalGissningar++;
+
+            // Kontrollera om gissningen är rätt
+            if (gissning === valtOrd) {
+                // Rätt gissning
+                rattGissningar++;
+                document.getElementById('feedback').innerText = "Rätt! Du gissade rätt ord.";
+            } else {
+                // Fel gissning
+                felGissningar++;
+                document.getElementById('feedback').innerText = `Fel. Det rätta ordet var ${valtOrd}.`;
+            }
+
+            // Uppdatera statistiken på sidan
+            document.getElementById('antal-gissningar').innerText = antalGissningar;
+            document.getElementById('ratt-gissningar').innerText = rattGissningar;
+            document.getElementById('fel-gissningar').innerText = felGissningar;
+
+            // Återställ inputfältet för nästa gissning
+            document.getElementById('gissning').value = '';
+
+            // Välj ett nytt ord att gissa på
+            valtOrd = ordlista[Math.floor(Math.random() * ordlista.length)];
+        }
+    </script>
   </body>
 </html>
