@@ -64,18 +64,84 @@ function isOneLetterApart(wordOne, wordTwo)
 end function;
 */
 
-let ordbok = ["FOUR", "FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE", "FIVE"];
-let answer = prompt("Starta spelet \n\nDu ska gissa orden genom att byta ett bokstav från den starta orden \n\nStarta orden är Four");
-let text = prompt("Nuvarande ord: " + answer + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + answer + "\n\nDu har gissat gånger");
-let text2 = prompt("Nuvarande ord: " + text + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + answer + "\n\nDu har gissat gånger");
+//let answer = prompt("Starta spelet \n\nDu ska gissa orden genom att byta ett bokstav från den starta orden \n\nStarta orden är Four");
+//let text = prompt("Nuvarande ord: " + answer + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + answer + "\n\nDu har gissat gånger");
+//let text2 = prompt("Nuvarande ord: " + text + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + answer + "\n\nDu har gissat gånger");
 
-let matchCount = 0;
-if (firstWord.length !== secondWord.length) {
-    console.log('Båda orden måste innehålla lika många bokstäver');
-}
-for (let i = 0; i < firstWord.length; i++) {
-    if (firstWord[i] === secondWord[i]) {
-        matchCount++;
+//for (let answer) {
+//    text = prompt("Nuvarande ord: " + i + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + i + "\n\nDu har gissat gånger");
+//}
+
+//let matchCount = 0;
+//if (firstWord.length !== secondWord.length) {
+//    console.log('Båda orden måste innehålla lika många bokstäver');
+//}
+//for (let i = 0; i < firstWord.length; i++) {
+//    if (firstWord[i] === secondWord[i]) {
+//        matchCount++;
+//    }
+//}
+//alert(`Det fanns ${matchCount} likheter mellan orden`);
+
+
+/*function användare(input) {
+    if (ordbok.includes(input)) {
+        answer = prompt("Gra! Det var rätt!! \n\nNuvarande ord: " + användareinput + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + användareinput + "\n\nDu har gissat gånger");
+        if (ordbok.includes(input)) {
+            answer = prompt("Bra! Det var rätt!! \n\nNuvarande ord: " + answer + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + answer + "\n\nDu har gissat gånger");
+        } 
+    } else {
+        console.log("hej då");
     }
 }
-alert(`Det fanns ${matchCount} likheter mellan orden`);
+
+const användareinput = prompt("Starta spelet \n\nDu ska gissa orden genom att byta ett bokstav från den starta orden \n\nStarta orden är Four");
+användare(användareinput);*/
+
+/*function puzzle(input) {
+    if (ordbok.includes(input)) {
+        contini = prompt("Gdkänd " + input);
+    } else {
+        console.log("Icke Godkänd");
+    }
+}
+
+const answer = prompt("Skriv in orden!!");
+puzzle(answer);*/
+
+const ordbok = ["FOUR", "FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE"];
+const finalord = "FIVE";
+
+function puzzle(input) {
+    return ordbok.includes(input);
+}
+
+function läsinsvar() {
+    let användareinput = prompt("Skriv in orden!!!");
+
+    while (användareinput !== finalord) {
+        if (puzzle(användareinput)) {
+            användareinput = prompt("Bra! Det var rätt!! \n\nNuvarande ord: " + användareinput + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + användareinput + "\n\nDu har gissat gånger");
+        } else {
+            alert("Orden finns inte med i ordboken");
+            användareinput = prompt("prova igen");
+        }
+    }
+
+    if (användareinput === finalord) {
+        användareinput = alert("Grattis!!\n\nDu klara det!!");
+    }
+    
+    
+    /*(!puzzle(användareinput)) {
+        alert("Orden finns inte med i ordboken");
+        användareinput = prompt("prova igen");
+    }
+
+    while (puzzle(användareinput)) {
+        användareinput = prompt("Bra! Det var rätt!! \n\nNuvarande ord: " + användareinput + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + användareinput + "\n\nDu har gissat gånger");
+    }
+
+    if användareinput = ("FIVE")*/
+}
+läsinsvar();
