@@ -49,6 +49,9 @@ function play()
     SET variabel ordbok = [FOUR, FOUL, FOOL, FOOT, FORT, FORE, FIRE, FIVE]; // Innehåller ALLA ord i det engelska språket
     SET variabel startOrd till "FOUR";
     SET variabel slutordOrd till "FIVE";
+    Skapa antalgissning på 0
+
+    SKapa 
 
 
 end function
@@ -64,67 +67,65 @@ function isOneLetterApart(wordOne, wordTwo)
 end function;
 */
 
-/*function användare(input) {
-    if (ordbok.includes(input)) {
-        answer = prompt("Gra! Det var rätt!! \n\nNuvarande ord: " + användareinput + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + användareinput + "\n\nDu har gissat gånger");
-        if (ordbok.includes(input)) {
-            answer = prompt("Bra! Det var rätt!! \n\nNuvarande ord: " + answer + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + answer + "\n\nDu har gissat gånger");
-        } 
-    } else {
-        console.log("hej då");
-    }
-}
-
-const användareinput = prompt("Starta spelet \n\nDu ska gissa orden genom att byta ett bokstav från den starta orden \n\nStarta orden är Four");
-användare(användareinput);*/
-
-/*function puzzle(input) {
-    if (ordbok.includes(input)) {
-        contini = prompt("Gdkänd " + input);
-    } else {
-        console.log("Icke Godkänd");
-    }
-}
-
-const answer = prompt("Skriv in orden!!");
-puzzle(answer);*/
-
 //--------------------Done---------------//
-/*const ordbok = ["FOUR", "FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE"];
+const ordbok = ["FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE"];
+const startord = "FOUR"
 const finalord = "FIVE";
+let antalgissning = 0;
 
 function puzzle(input) {
     return ordbok.includes(input);
 }
 
 function läsinsvar() {
-    let användareinput = prompt("Starta spelet \n\nDu ska gissa orden genom att byta ett bokstav från den starta orden \n\nStarta orden är Four");
-    let nmbrOfThrows = 0;
+    let användareinput = prompt("Starta spelet \n\nDu ska gissa orden genom att byta ett bokstav från den starta orden \n\nStarta orden är " + startord);
+        
+    antalgissning++;
 
-    /*while (användareinput !== finalord) {
-        let användareinput = Math.floor + 1;
-        nmbrOfThrows++;
-        antal = ('${nmbrOfThrows}');
-        if (användareinput === finalord) {
-            användareinput++;
-        }
-    }*/
-
-   /* while (användareinput !== finalord) { 
+    while (användareinput !== finalord) {
         if (puzzle(användareinput)) {
-            användareinput = prompt("Bra! Det var rätt!! \n\nNuvarande ord: " + användareinput + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + användareinput + "\n\nDu har gissat " + antal + " gånger");
-            användarechace = Math.floor + 1;
-            nmbrOfThrows++;
-            antal = ('${nmbrOfThrows}');
+            användareinput = prompt("Bra! Det var rätt!! \n\nNuvarande ord: " + användareinput + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + användareinput + "\n\nDu har gissat " + antalgissning + " gånger");
+            antalgissning++;
         } else {
-            alert("Orden finns inte med i ordboken");
-            användareinput = prompt("prova igen");
-        }
-    }
+            if (chance(användareinput)) {
+                alert("Får använda bara 1 bokstav i tagen");
+                antalgissning++;
+            } else {
+                alert("Det var Fel!! " + "\n\nDu har gissat " + antalgissning + " gånger");
+                användareinput = prompt("Tyvär! Det var fel!! \n\nNuvarande ord: " + användareinput + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + användareinput + "\n\nDu har gissat " + antalgissning + " gånger");
+                antalgissning++;
+            }
+        } 
 
+    }
+    /* if (användareinput === 1) {
+        alert("Får använda bara 1 bokstav i tagen");
+        antalgissning++;        
+        return;
+    }*/
     if (användareinput === finalord) {
-        användareinput = alert("Grattis!!\n\nDu klara det!!");
+        användareinput = alert("Grattis!!\n\nDu klara det!!\n\nDu klara på den " + antalgissning);
     }
 }
 
-läsinsvar();*/
+/*function chance(användareinput) {
+    if (användareinput.length !== ordbok.length) return false;
+
+    difirence = 0;
+    for (let i = 0; i < användareinput.length; i++) {
+        if (användareinput[i] !== ordbok[i]) {
+            difirence++;
+        }
+    }
+    return difirence === 1;
+}*/
+
+function justOne(användareinput) {
+    användareinput = 0;
+
+    if 
+
+    return diffCount === 1; // returnerar sant om endast en bokstav ändrats, annars falska
+}
+
+läsinsvar();
