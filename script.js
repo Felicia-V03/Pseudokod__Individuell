@@ -1,22 +1,21 @@
 // G-Version - Split the Nota
 // Skriv din pseudokod innanför nedanstående kommentarsblock
-/*
-Starta
-    Skapa function splitnota:
-        Läs in värdet för summan i "price" från anvädarens input
-        Läs in värdet för antal personen i "count" från anvädarens input
-        Läs in värdet för dricks i "tip" från anvädarens input
+/* 
+Skapa function splitnota:
+    Läs in värdet för summan i "price" från anvädarens input
+    Läs in värdet för antal personen i "count" från anvädarens input
+    Läs in värdet för dricks i "tip" från anvädarens input
+
+    Räkna ut värden med "price, count, tip"
+        Räkna ut dricks med tip till tipamount: tipamount = price * tip
+        Räkna ut den totala belooppet per personen: reslutat = (price + tipamount) / count
+        Skriv ut texten: "Varje person ska betala (reslutat) SEK"
+    Om användare fyll inte in information
+        Skriv ut texten: "Vänligen fyll i alla fält"
     
-        Räkna ut värden med "price, count, tip"
-            Räkna ut dricks med tip till tipamount: tipamount = price * tip
-            Räkna ut den totala belooppet per personen: reslutat = (price + tipamount) / count
-            Skriv ut texten: "Varje person ska betala (reslutat) SEK"
-        Om användare fyll inte in information
-            Skriv ut texten: "Vänligen fyll i alla fält"
-        
-        Skriv ut reslutat på sidan
-        Skriv ut resultat på konsole sidan.
-End
+    Skriv ut reslutat på sidan
+    Skriv ut resultat på konsole sidan.
+End function
 */
 
 //Function för splitnota
@@ -85,11 +84,7 @@ Function läsinsvar
     IF gissaOrd stämmer med finalOrd
         Skriv "Grattis"
 End function
-
-
 */
-
-
 
 //Ord listan
 const ordBok = ["FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE"];
