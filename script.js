@@ -19,20 +19,32 @@ Starta
 End
 */
 
+//Function för splitnota
 function splitnota() {
+    //price för summan
     let price = Number(document.getElementById("price").value);
+    //count för antal personer
     let count = Number(document.getElementById("count").value);
+    //tip för dricks
     let tip = Number(document.getElementById("tip").value);
     
+    //Räkna ut summan
     let splitsumman;
+    //Ta emot price, count, tip
     if (price, count, tip) {
+        //Räkna ut dricks
         tipamount = price * tip;
+        //Räkna ut summan
         reslutat = (price + tipamount) / count;
+        //Skriva uut summan 
         text = "Varje person ska betala " + reslutat + " SEK";
+      //Om användare skriva inte in i fälte
     } else {
         text = "Vänligen fyll i alla fält";
     }
+    //Skriva ut texten
     document.getElementById("split").innerHTML = text;
+    //Visa in konsolen
     console.log(text);
 }
 
@@ -41,91 +53,105 @@ function splitnota() {
 // Startkoden är 100% frivillig och kan tas bort eller skrivas om
 /*
 
+SET variabel ordbok = [FOUR, FOUL, FOOL, FOOT, FORT, FORE, FIRE, FIVE]; // Innehåller ALLA ord i det engelska språket
+SET variabel startOrd till "FOUR";
+SET variabel slutordOrd till "FIVE";
+Skapa antalgissning på 0
+
+Function puzzle
+    Return om ordet ginns i ordbok
+End function
+
+Function justone
+    LET diffirence på 0
+    FOR kolla om forword ändra med en bokstav
+        IF forword jamföra med newword
+        diffirence öka
+End function
+
+Function läsinsvar
+    LET nowWord är också startord
+    LET gissaOrd med prompt
+
+    WHILE gissaOrd stämmer inte med finalOrd
+        antalGissning öka varje gång som användare gissa
+        IF gissaOrd finns i ordBok
+            IF nowWord och gissaOrd stämmer med ändning och med en bokstav
+            ELSE warning att användare måste ändra bara med en bokstav
+        ELSE gissaOrd finns inte i ordBok
+            Warning
+            Försöka igen
+    END WHILE
+    IF gissaOrd stämmer med finalOrd
+        Skriv "Grattis"
+End function
 
 
-play();
-
-function play()
-    SET variabel ordbok = [FOUR, FOUL, FOOL, FOOT, FORT, FORE, FIRE, FIVE]; // Innehåller ALLA ord i det engelska språket
-    SET variabel startOrd till "FOUR";
-    SET variabel slutordOrd till "FIVE";
-    Skapa antalgissning på 0
-
-    SKapa 
-
-
-end function
-
-
-
-function isOneLetterApart(wordOne, wordTwo)
-    set variabel diffCount till 0;
-
-    // Här behöver du skriva koden för din funktion
-
-    return diffCount === 1; // returnerar sant om endast en bokstav ändrats, annars falskt
-end function;
 */
 
-//--------------------Done---------------//
-const ordbok = ["FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE"];
-const startord = "FOUR"
-const finalord = "FIVE";
-let antalgissning = 0;
 
+
+//Ord listan
+const ordBok = ["FOUL", "FOOL", "FOOT", "FORT", "FORE", "FIRE"];
+
+//Start ordet
+const startOrd = "FOUR";
+
+//Sista ordet
+const finalOrd = "FIVE";
+
+//Gissning antal start med 0
+let antalGissning = 0;
+
+//Jämföra om ordet finns i ordbok
 function puzzle(input) {
-    return ordbok.includes(input);
+    return ordBok.includes(input);
+}
+
+//Function för kolla om ordet ändra med en bokstav
+function justOne(forWord, newWord) {
+    let diffirence = 0;
+
+    //Jämföra ord om ordet 
+    for (let i = 0; i < forWord.length; i++) {
+        if (forWord[i] !== newWord[i]) {
+            diffirence++;
+        }
+    }
+
+    //Fortsätta om ordet ändra bara en bokstav
+    return diffirence === 1;
 }
 
 function läsinsvar() {
-    let användareinput = prompt("Starta spelet \n\nDu ska gissa orden genom att byta ett bokstav från den starta orden \n\nStarta orden är " + startord);
+    //Nu ord är också start ord
+    let nowWord = startOrd;
+    let gissaOrd = prompt("Starta spelet\n\nDu ska gissa orden genom att byta en bokstav i taget.\n\nStartord är " + nowWord);
+
+    //Ordet som skriva av användare som är inte den finalord
+    while (gissaOrd !== finalOrd) {
+        antalGissning++;
         
-    antalgissning++;
-
-    while (användareinput !== finalord) {
-        if (puzzle(användareinput)) {
-            användareinput = prompt("Bra! Det var rätt!! \n\nNuvarande ord: " + användareinput + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + användareinput + "\n\nDu har gissat " + antalgissning + " gånger");
-            antalgissning++;
-        } else {
-            if (chance(användareinput)) {
-                alert("Får använda bara 1 bokstav i tagen");
-                antalgissning++;
+        if (puzzle(gissaOrd)) {
+            //Om användare skriva ordet som är rätt och ändra bara en bokstav 
+            if (justOne(nowWord, gissaOrd)) {
+                nowWord = gissaOrd;
+                gissaOrd = prompt("Bra! det var rätt!! \n\nNuvarande ord: " + nowWord + "\n\nGissa ett ord som skiljer sig med en bokstav från " + nowWord + ". \n\nDu har gissat " + antalGissning + " gånger.");
+              //Om användare skriva ordet som har blivit ändra mer än en bokstav
             } else {
-                alert("Det var Fel!! " + "\n\nDu har gissat " + antalgissning + " gånger");
-                användareinput = prompt("Tyvär! Det var fel!! \n\nNuvarande ord: " + användareinput + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + användareinput + "\n\nDu har gissat " + antalgissning + " gånger");
-                antalgissning++;
+                alert("Får använda bara en bokstav i tagen");
+                gissaOrd = prompt("Tyvär! Det var fel!! \n\nNuvarande ord: " + nowWord + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + nowWord + ". Du har gissat " + antalGissning + " gånger.");
             }
-        } 
-
-    }
-    /* if (användareinput === 1) {
-        alert("Får använda bara 1 bokstav i tagen");
-        antalgissning++;        
-        return;
-    }*/
-    if (användareinput === finalord) {
-        användareinput = alert("Grattis!!\n\nDu klara det!!\n\nDu klara på den " + antalgissning);
-    }
-}
-
-/*function chance(användareinput) {
-    if (användareinput.length !== ordbok.length) return false;
-
-    difirence = 0;
-    for (let i = 0; i < användareinput.length; i++) {
-        if (användareinput[i] !== ordbok[i]) {
-            difirence++;
+          //Om användare skriva ordet som finns inte i ordbok
+        } else {
+            alert("Det var Fel!! " + "\n\nDu har gissat " + antalGissning + " gånger");
+            gissaOrd = prompt("Tyvär! Det var fel!! \n\nNuvarande ord: " + nowWord + "\n\nSkriver ett ord som skiljer sig med ett bokstav från " + nowWord + ". Du har gissat " + antalGissning + " gånger.");
         }
     }
-    return difirence === 1;
-}*/
 
-function justOne(användareinput) {
-    användareinput = 0;
-
-    if 
-
-    return diffCount === 1; // returnerar sant om endast en bokstav ändrats, annars falska
+    //När användare gissa rätt den finalord
+        alert("Grattis!!\n\nDu klara det!!\n\nDu klara på den " + antalGissning + " gånger");
 }
 
+//Start function
 läsinsvar();
